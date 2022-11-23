@@ -1,0 +1,342 @@
+[gd_scene load_steps=17 format=3 uid="uid://bnxaek4jvf4wo"]
+
+[ext_resource type="Script" path="res://src/GameManager.gd" id="1_7gt61"]
+[ext_resource type="Script" path="res://src/GameGrid.gd" id="1_50f14"]
+[ext_resource type="PackedScene" uid="uid://dufh5hxl0s1n3" path="res://GameElements/karkulka.tscn" id="2_1lxq2"]
+[ext_resource type="FontFile" uid="uid://vwnsjr1pbblc" path="res://UI/Rubik-Bold.ttf" id="4_0a3tv"]
+[ext_resource type="FontFile" uid="uid://da86twmf0kkdk" path="res://UI/Rubik-Regular.ttf" id="5_0qcnf"]
+[ext_resource type="Texture2D" uid="uid://c424uikxprons" path="res://Assets/baguette.png" id="6_ovkgm"]
+[ext_resource type="Texture2D" uid="uid://q7k8nrtyjkm8" path="res://Assets/wine.png" id="7_7kv48"]
+[ext_resource type="Texture2D" uid="uid://316rs56tglrr" path="res://Assets/item_field.png" id="8_dckv3"]
+
+[sub_resource type="Theme" id="Theme_8eqsg"]
+default_font = ExtResource("4_0a3tv")
+default_font_size = 6
+
+[sub_resource type="Theme" id="Theme_nfvgw"]
+default_font = ExtResource("5_0qcnf")
+default_font_size = 6
+
+[sub_resource type="Theme" id="Theme_0klia"]
+default_font = ExtResource("4_0a3tv")
+default_font_size = 6
+
+[sub_resource type="Theme" id="Theme_w510w"]
+default_font = ExtResource("4_0a3tv")
+
+[sub_resource type="Theme" id="Theme_gq4u4"]
+default_font = ExtResource("4_0a3tv")
+default_font_size = 13
+
+[sub_resource type="Theme" id="Theme_38gvn"]
+default_font = ExtResource("5_0qcnf")
+default_font_size = 5
+
+[sub_resource type="Theme" id="Theme_kg33s"]
+default_font = ExtResource("4_0a3tv")
+default_font_size = 6
+
+[sub_resource type="Theme" id="Theme_relkv"]
+default_font = ExtResource("4_0a3tv")
+default_font_size = 6
+
+[node name="GameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+script = ExtResource("1_7gt61")
+
+[node name="BaseGameBg" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.0
+offset_top = -61.0
+offset_right = 60.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.254902, 0.34902, 1)
+
+[node name="GameGrid" type="GridContainer" parent="BaseGameBg"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -58.0
+offset_right = 58.0
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 5
+script = ExtResource("1_50f14")
+
+[node name="Karkulka" parent="BaseGameBg" instance=ExtResource("2_1lxq2")]
+layout_mode = 1
+offset_top = 107.0
+offset_bottom = 107.0
+
+[node name="CurrentFieldLabel" type="Label" parent="BaseGameBg"]
+layout_mode = 0
+offset_left = 127.0
+offset_right = 219.0
+offset_bottom = 9.0
+scale = Vector2(1.00279, 0.9748)
+focus_mode = 2
+theme = SubResource("Theme_8eqsg")
+text = "Game Beginning"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="CurrentFieldLabelBg" type="ColorRect" parent="BaseGameBg/CurrentFieldLabel"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.129412, 0.180392, 1)
+
+[node name="CurrentFieldDesc" type="Label" parent="BaseGameBg"]
+layout_mode = 0
+offset_left = 127.0
+offset_top = 13.0
+offset_right = 219.0
+offset_bottom = 69.0
+focus_mode = 2
+theme = SubResource("Theme_nfvgw")
+text = "Press an arrow or WASD to start playing."
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="CurrentFieldDescBg" type="ColorRect" parent="BaseGameBg/CurrentFieldDesc"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.129412, 0.180392, 1)
+
+[node name="Button1" type="Button" parent="BaseGameBg"]
+layout_mode = 0
+offset_left = 127.0
+offset_top = 71.0
+offset_right = 219.0
+offset_bottom = 87.0
+theme = SubResource("Theme_0klia")
+text = "option1"
+
+[node name="Button2" type="Button" parent="BaseGameBg"]
+layout_mode = 0
+offset_left = 127.0
+offset_top = 89.0
+offset_right = 219.0
+offset_bottom = 105.0
+theme = SubResource("Theme_0klia")
+text = "option2"
+
+[node name="Button3" type="Button" parent="BaseGameBg"]
+layout_mode = 0
+offset_left = 127.0
+offset_top = 107.0
+offset_right = 219.0
+offset_bottom = 123.0
+theme = SubResource("Theme_0klia")
+text = "option3"
+
+[node name="InventoryLabel" type="Label" parent="BaseGameBg"]
+layout_mode = 0
+offset_left = -94.0
+offset_right = -2.0
+offset_bottom = 9.0
+focus_mode = 2
+theme = SubResource("Theme_8eqsg")
+text = "Inventory"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="InventoryLabelBg" type="ColorRect" parent="BaseGameBg/InventoryLabel"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_w510w")
+color = Color(0, 0.129412, 0.180392, 1)
+
+[node name="InventoryBg" type="ColorRect" parent="BaseGameBg/InventoryLabel"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 13.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_w510w")
+color = Color(0, 0.129412, 0.180392, 1)
+
+[node name="Inventory" type="GridContainer" parent="BaseGameBg/InventoryLabel/InventoryBg"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -7.5
+offset_right = 38.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+columns = 5
+
+[node name="Item1" type="Sprite2D" parent="BaseGameBg/InventoryLabel/InventoryBg/Inventory"]
+position = Vector2(8, 8)
+texture = ExtResource("6_ovkgm")
+
+[node name="Item2" type="Sprite2D" parent="BaseGameBg/InventoryLabel/InventoryBg/Inventory"]
+position = Vector2(28, 8)
+texture = ExtResource("7_7kv48")
+
+[node name="Item3" type="Sprite2D" parent="BaseGameBg/InventoryLabel/InventoryBg/Inventory"]
+position = Vector2(48, 8)
+texture = ExtResource("8_dckv3")
+
+[node name="Item4" type="Sprite2D" parent="BaseGameBg/InventoryLabel/InventoryBg/Inventory"]
+position = Vector2(68, 8)
+texture = ExtResource("8_dckv3")
+
+[node name="Popup" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -43.0
+offset_right = 90.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.254902, 0.34902, 1)
+
+[node name="Background" type="ColorRect" parent="Popup"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -69.0
+offset_top = -44.0
+offset_right = 71.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.647059)
+
+[node name="PopupTitle" type="Label" parent="Popup"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -90.0
+offset_top = 12.0
+offset_right = 90.0
+offset_bottom = 35.0
+grow_horizontal = 2
+theme = SubResource("Theme_gq4u4")
+text = "PopupTitle
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="PopupText" type="Label" parent="Popup"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.0
+offset_top = -10.5
+offset_right = 83.0
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_38gvn")
+text = "PopupText
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Buttons" type="Control" parent="Popup"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -69.5
+offset_top = -33.0
+offset_right = 69.5
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Button1" type="Button" parent="Popup/Buttons"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -7.0
+offset_right = 59.0
+offset_bottom = 7.0
+grow_vertical = 2
+theme = SubResource("Theme_kg33s")
+text = "Exit Game"
+
+[node name="Button2" type="Button" parent="Popup/Buttons"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = -7.0
+offset_bottom = 7.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = SubResource("Theme_relkv")
+text = "Play Again"
+
+[connection signal="pressed" from="BaseGameBg/Button1" to="." method="_on_button1_pressed"]
+[connection signal="pressed" from="BaseGameBg/Button2" to="." method="_on_button2_pressed"]
+[connection signal="pressed" from="BaseGameBg/Button3" to="." method="_on_button3_pressed"]
+[connection signal="pressed" from="Popup/Buttons/Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="Popup/Buttons/Button2" to="." method="_on_button_2_pressed"]

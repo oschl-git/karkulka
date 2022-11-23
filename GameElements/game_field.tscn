@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5cbhtn7vujue"]
+
+[ext_resource type="Script" path="res://src/GameField.gd" id="1_56rd1"]
+[ext_resource type="Texture2D" uid="uid://by12tvccb6odm" path="res://Assets/babicka.png" id="1_pymfv"]
+
+[node name="GameField" type="Control"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 16.0
+offset_bottom = 16.0
+script = ExtResource("1_56rd1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(8, 8)
+texture = ExtResource("1_pymfv")
