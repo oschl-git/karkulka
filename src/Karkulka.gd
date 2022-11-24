@@ -1,6 +1,9 @@
 extends Control
 class_name Karkulka
 
+#This class handles the Karkulka (player) character
+
+
 var current_position : Vector2
 var can_move := true
 var stuck_on_obstacle := false

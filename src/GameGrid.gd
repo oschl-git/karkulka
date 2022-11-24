@@ -1,9 +1,12 @@
 extends GridContainer
 class_name GameGrid
 
-var dimensions : Vector2 = Vector2(6, 6)
+#This class manages the game grid
+
 
 @onready var game_field := preload("res://GameElements/game_field.tscn")
+
+var dimensions : Vector2 = Vector2(6, 6)
 var game_grid_array : Array[Array]
 
 
@@ -23,6 +26,8 @@ func _ready() -> void:
 		)
 	)
 
+
+#Generates items for the game grid.
 func generate_grid_items() -> Array[Array]:
 	var grid_array_items : Array[GameField] = []
 	for n in 36:

@@ -1,6 +1,9 @@
 extends Node
 class_name Question
 
+#This is a class used for storing question data
+
+
 var question : String
 var answers : Array[String]
 var correct_answer : String

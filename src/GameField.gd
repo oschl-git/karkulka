@@ -1,6 +1,9 @@
 extends Control
 class_name GameField
 
+#This class manages individual game fields
+
+
 enum Types {
 	FOREST,
 	KARKULKA_HOME,
@@ -9,8 +12,8 @@ enum Types {
 	BLUDNY_KOREN,
 	ITEM_FIELD,
 }
-
 var type := Types.FOREST
+var questions : Array[Question]
 
 var textures := [
 	"res://Assets/forest.png",
@@ -23,18 +26,18 @@ var textures := [
 
 var rng = RandomNumberGenerator.new()
 
-var questions : Array[Question]
-
 
 func _ready() -> void:
 	questions = generate_questions()
 
 
+#Changes field type and texture.
 func change_type(new_type : Types) -> void:
 	type = new_type
 	$Sprite2D.set_texture(load(textures[type]))
 
 
+#Calls correct interact method depending on type of field.
 func interact() -> void:
 	match type:
 		Types.FOREST:
@@ -104,7 +107,31 @@ func obstacle() -> void:
 			questions[0].answers[2])
 
 
-func on_button_pressed(num : int):
+func bludny_koren() -> void:
+	GlobalScript.gamemanager.change_field_info(
+		"Bludny Koren", "Bludny koren transfers you to a random place on the game map."
+	)
+	GlobalScript.gamemanager.change_button_state("", "", "")
+	
+	GlobalScript.karkulka.can_move = false
+	await get_tree().create_timer(1).timeout
+	GlobalScript.karkulka.can_move = true
+	GlobalScript.karkulka.change_position(rng.randi_range(0, 5), rng.randi_range(0, 5), true)
+
+
+func item_field() -> void:
+	GlobalScript.gamemanager.change_field_info(
+		"Mushroom Field", "A field filled with (probably) edible mushrooms. Karkulka can
+		refill her supplies for babicka here."
+	)
+	if GlobalScript.karkulka.inventory.size() < 4:
+		GlobalScript.gamemanager.change_button_state("Collect mushrooms", "", "")
+	else:
+		GlobalScript.gamemanager.change_button_state("Inventory full", "", "")
+
+
+#Reacts accordingly after receiving a button pressed call.
+func on_button_pressed(num : int) -> void:
 	match type:
 		Types.OBSTACLE:
 			if GlobalScript.karkulka.stuck_on_obstacle:
@@ -151,29 +178,7 @@ func on_button_pressed(num : int):
 			GlobalScript.gamemanager.change_button_state("", "", "")
 
 
-func bludny_koren() -> void:
-	GlobalScript.gamemanager.change_field_info(
-		"Bludny Koren", "Bludny koren transfers you to a random place on the game map."
-	)
-	GlobalScript.gamemanager.change_button_state("", "", "")
-	
-	GlobalScript.karkulka.can_move = false
-	await get_tree().create_timer(1).timeout
-	GlobalScript.karkulka.can_move = true
-	GlobalScript.karkulka.change_position(rng.randi_range(0, 5), rng.randi_range(0, 5), true)
-
-
-func item_field() -> void:
-	GlobalScript.gamemanager.change_field_info(
-		"Mushroom Field", "A field filled with (probably) edible mushrooms. Karkulka can
-		refill her supplies for babicka here."
-	)
-	if GlobalScript.karkulka.inventory.size() < 4:
-		GlobalScript.gamemanager.change_button_state("Collect mushrooms", "", "")
-	else:
-		GlobalScript.gamemanager.change_button_state("Inventory full", "", "")
-
-
+#Generates a typed array of questions.
 func generate_questions() -> Array[Question]:
 	var new_question_array : Array[Question] = []
 	

@@ -1,7 +1,10 @@
 extends Node
 
+#This is a globally loaded and accessible script used for various needs
+
+
 var karkulka : Karkulka
-var gamegrid
+var gamegrid : GameGrid
 var gamemanager : GameManager
 
 

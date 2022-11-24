@@ -1,6 +1,9 @@
 extends Control
 class_name GameManager
 
+#This class manages game UI and game elements
+
+
 func _enter_tree() -> void:
 	GlobalScript.gamemanager = self
 
@@ -9,11 +12,13 @@ func _ready() -> void:
 	update_inventory(GlobalScript.karkulka.inventory)
 
 
+#Changes field title and description (on the right side of the screen)
 func change_field_info(field_name : String, field_desc : String):
 	$BaseGameBg/CurrentFieldLabel.set_text(field_name)
 	$BaseGameBg/CurrentFieldDesc.set_text(field_desc)
 
 
+#Updates inventory with an array of strings
 func update_inventory(new_inventory : Array[String]) -> void:
 	$BaseGameBg/InventoryLabel/InventoryBg/Inventory/Item1.visible = false
 	$BaseGameBg/InventoryLabel/InventoryBg/Inventory/Item2.visible = false
@@ -34,9 +39,9 @@ func update_inventory(new_inventory : Array[String]) -> void:
 				get_node(current_item).texture = load("res://Assets/wine.png")
 			"mushroom":
 				get_node(current_item).texture = load("res://Assets/item_field.png")
-	
 
 
+#Changes button text and visibility
 func change_button_state(
 		button1 : String, button2 : String, button3 : String) -> void:
 	if button1 != "":
@@ -55,6 +60,7 @@ func change_button_state(
 	else: $BaseGameBg/Button3.visible = false
 
 
+#Calls button press on correct game field
 func send_pressed_button(num : int):
 	GlobalScript.gamegrid.game_grid_array[
 		GlobalScript.karkulka.current_position.y][
@@ -73,6 +79,7 @@ func _on_button3_pressed() -> void:
 	send_pressed_button(2)
 
 
+#Shows popup that disables the game (game must be restarted after)
 func show_popup(popup_title : String, popup_text : String):
 	$Popup.visible = true
 	$Popup/PopupTitle.text = popup_title
