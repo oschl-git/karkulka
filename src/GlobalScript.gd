@@ -6,6 +6,7 @@ extends Node
 var karkulka : Karkulka
 var gamegrid : GameGrid
 var gamemanager : GameManager
+var wolf : Wolf
 
 
 func _ready() -> void:

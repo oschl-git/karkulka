@@ -33,19 +33,25 @@ _global_script_classes=[{
 "class": &"Question",
 "language": &"GDScript",
 "path": "res://src/Question.gd"
+}, {
+"base": "Control",
+"class": &"Wolf",
+"language": &"GDScript",
+"path": "res://GameElements/wolf.gd"
 }]
 _global_script_class_icons={
 "GameField": "",
 "GameGrid": "",
 "GameManager": "",
 "Karkulka": "",
-"Question": ""
+"Question": "",
+"Wolf": ""
 }
 
 [application]
 
 config/name="Karkulka"
-run/main_scene="res://UI/game_ui.tscn"
+run/main_scene="res://UI/main_menu.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 

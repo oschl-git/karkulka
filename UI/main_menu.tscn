@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjbc7hwnwlidt"]
+
+[ext_resource type="Script" path="res://src/MainMenu.gd" id="1_2tijd"]
+[ext_resource type="FontFile" uid="uid://vwnsjr1pbblc" path="res://UI/Rubik-Bold.ttf" id="1_ppqg7"]
+
+[sub_resource type="Theme" id="Theme_4riim"]
+default_font = ExtResource("1_ppqg7")
+default_font_size = 21
+
+[sub_resource type="LabelSettings" id="LabelSettings_c2imw"]
+font = ExtResource("1_ppqg7")
+font_size = 21
+font_color = Color(0.639216, 0, 0.164706, 1)
+
+[sub_resource type="Theme" id="Theme_8eav7"]
+default_font = ExtResource("1_ppqg7")
+default_font_size = 9
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2tijd")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.129412, 0.180392, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="Label" parent="Background"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.278
+anchor_right = 0.5
+anchor_bottom = 0.278
+offset_left = -160.0
+offset_top = -15.04
+offset_right = 160.0
+offset_bottom = 14.96
+grow_horizontal = 2
+theme = SubResource("Theme_4riim")
+text = "ČERVENÁ KARKULKA"
+label_settings = SubResource("LabelSettings_c2imw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayButton" type="Button" parent="Background"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.583
+anchor_right = 0.5
+anchor_bottom = 0.583
+offset_left = -60.0
+offset_top = -9.94
+offset_right = 60.0
+offset_bottom = 10.06
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_8eav7")
+text = "PLAY"
+
+[node name="ExitButton" type="Button" parent="Background"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.583
+anchor_right = 0.5
+anchor_bottom = 0.583
+offset_left = -60.0
+offset_top = 16.06
+offset_right = 60.0
+offset_bottom = 36.06
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_8eav7")
+text = "EXIT"
+
+[connection signal="pressed" from="Background/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Background/ExitButton" to="." method="_on_exit_button_pressed"]

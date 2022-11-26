@@ -9,6 +9,7 @@ var can_move := true
 var stuck_on_obstacle := false
 var inventory := ["baguette", "wine"]
 
+
 func _enter_tree() -> void:
 	GlobalScript.karkulka = self
 
@@ -60,4 +61,21 @@ func change_position(x : float, y : float, force := false) -> void:
 		current_position.y = 0
 		return
 
+	move_wolf()
 	GlobalScript.gamegrid.game_grid_array[current_position.y][current_position.x].interact()
+
+
+func check_wolf_death() -> void:
+	var wolf_position : Vector2 = GlobalScript.wolf.current_position
+	if wolf_position == current_position:
+		GlobalScript.gamemanager.show_popup(
+			"Game Over!",
+			"The Wolf devoured Karkulka."
+		)
+		can_move = false
+
+
+func move_wolf() -> void:
+	check_wolf_death()
+	GlobalScript.wolf.move()
+	check_wolf_death()
