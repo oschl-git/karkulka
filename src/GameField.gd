@@ -28,7 +28,7 @@ var rng = RandomNumberGenerator.new()
 
 
 func _ready() -> void:
-	questions = generate_questions()
+	questions = QuestionGenerator.get_question_array()
 
 
 #Changes field type and texture.
@@ -139,6 +139,9 @@ func item_field() -> void:
 func on_button_pressed(num : int) -> void:
 	match type:
 		Types.OBSTACLE:
+			if questions.size() == 0:
+				questions = QuestionGenerator.get_question_array()
+
 			if GlobalScript.karkulka.stuck_on_obstacle:
 				GlobalScript.karkulka.inventory.remove_at(0)
 				GlobalScript.gamemanager.update_inventory(
@@ -153,12 +156,14 @@ func on_button_pressed(num : int) -> void:
 				)
 				GlobalScript.gamemanager.change_button_state("", "", "")
 			elif questions[0].answers[num] == questions[0].correct_answer:
+				if questions.size() != 0: questions.remove_at(0)
 				GlobalScript.karkulka.can_move = true
 				GlobalScript.gamemanager.change_field_info(
 					"Correct!", "You've successfully passed the obstacle."
 				)
 				GlobalScript.gamemanager.change_button_state("", "", "")
 			else:
+				if questions.size() != 0: questions.remove_at(0)
 				if GlobalScript.karkulka.inventory.size() <= 0:
 					GlobalScript.gamemanager.show_popup(
 						"Game Over!",
@@ -191,47 +196,3 @@ func on_button_pressed(num : int) -> void:
 				"Forest Path", "A simple forest path with not much going on."
 			)
 			GlobalScript.gamemanager.change_button_state("", "", "")
-
-
-#Generates a typed array of questions.
-func generate_questions() -> Array[Question]:
-	var new_question_array : Array[Question] = []
-	
-	new_question_array.append(Question.new(
-		"Kolik cukru je v jedné tyčince Twix?",
-		"49g",
-		"5g",
-		"63g"
-	))
-	new_question_array.append(Question.new(
-		"Kolik let je panu Mandíkovi?",
-		"asi 34",
-		"13",
-		"128"
-	))
-	new_question_array.append(Question.new(
-		"Kolik je na SPŠE Ječná výtahů?",
-		"2",
-		"8",
-		"1"
-	))
-	new_question_array.append(Question.new(
-		"Doplňte jméno učitele elektrotechniky: Peter ...",
-		"Kováč",
-		"Koláč",
-		"Kovář"
-	))
-	new_question_array.append(Question.new(
-		"Doplňte jméno učitele fyziky: Luboš ...",
-		"Rašek",
-		"Šašek",
-		"Vašek"
-	))
-	new_question_array.append(Question.new(
-		"Kde se nachází školni bazén SPŠE Ječná?",
-		"Bazén neexistuje",
-		"Pod trávníkem",
-		"Na střeše"
-	))
-	
-	return new_question_array
