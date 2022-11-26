@@ -42,7 +42,7 @@ _global_script_classes=[{
 "base": "Control",
 "class": &"Wolf",
 "language": &"GDScript",
-"path": "res://GameElements/wolf.gd"
+"path": "res://src/Wolf.gd"
 }]
 _global_script_class_icons={
 "GameField": "",

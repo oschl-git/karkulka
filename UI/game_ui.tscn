@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c424uikxprons" path="res://Assets/baguette.png" id="6_ovkgm"]
 [ext_resource type="Texture2D" uid="uid://q7k8nrtyjkm8" path="res://Assets/wine.png" id="7_7kv48"]
 [ext_resource type="Texture2D" uid="uid://316rs56tglrr" path="res://Assets/item_field.png" id="8_dckv3"]
-[ext_resource type="PackedScene" uid="uid://cr0vp3pjr74at" path="res://GameElements/wolf.tscn" id="9_n4325"]
+[ext_resource type="PackedScene" uid="uid://dq1xaa6te0rsx" path="res://GameElements/wolf.tscn" id="9_n4325"]
 
 [sub_resource type="Theme" id="Theme_8eqsg"]
 default_font = ExtResource("4_0a3tv")

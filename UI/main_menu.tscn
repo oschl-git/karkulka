@@ -26,7 +26,6 @@ grow_vertical = 2
 script = ExtResource("1_2tijd")
 
 [node name="Background" type="ColorRect" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -36,7 +35,6 @@ color = Color(0, 0.129412, 0.180392, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Title" type="Label" parent="Background"]
-layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.278
@@ -54,7 +52,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PlayButton" type="Button" parent="Background"]
-layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.583
@@ -70,7 +67,6 @@ theme = SubResource("Theme_8eav7")
 text = "PLAY"
 
 [node name="ExitButton" type="Button" parent="Background"]
-layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.583

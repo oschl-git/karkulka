@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cr0vp3pjr74at"]
+[gd_scene load_steps=3 format=3 uid="uid://dq1xaa6te0rsx"]
 
-[ext_resource type="Script" path="res://GameElements/wolf.gd" id="1_gaojx"]
+[ext_resource type="Script" path="res://src/Wolf.gd" id="1_gaojx"]
 [ext_resource type="Texture2D" uid="uid://g7xvwmtc3m7w" path="res://Assets/wolf.png" id="1_ukavb"]
 
 [node name="Wolf" type="Control"]
