@@ -13,7 +13,7 @@ func _ready() -> void:
 
 
 #Changes field title and description (on the right side of the screen)
-func change_field_info(field_name : String, field_desc : String):
+func change_field_info(field_name : String, field_desc : String) -> void:
 	$BaseGameBg/CurrentFieldLabel.set_text(field_name)
 	$BaseGameBg/CurrentFieldDesc.set_text(field_desc)
 
@@ -61,7 +61,7 @@ func change_button_state(
 
 
 #Calls button press on correct game field
-func send_pressed_button(num : int):
+func send_pressed_button(num : int) -> void:
 	GlobalScript.gamegrid.game_grid_array[
 		GlobalScript.karkulka.current_position.y][
 		GlobalScript.karkulka.current_position.x].on_button_pressed(num)
@@ -80,7 +80,7 @@ func _on_button3_pressed() -> void:
 
 
 #Shows popup that disables the game (game must be restarted after)
-func show_popup(popup_title : String, popup_text : String):
+func show_popup(popup_title : String, popup_text : String) -> void:
 	$Popup.visible = true
 	$Popup/PopupTitle.text = popup_title
 	$Popup/PopupText.text = popup_text

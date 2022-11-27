@@ -3,6 +3,7 @@ extends Node
 #This is a globally loaded and accessible script used for various needs
 
 
+#Globally accessible instances of currently used scripts
 var karkulka : Karkulka
 var gamegrid : GameGrid
 var gamemanager : GameManager
@@ -22,6 +23,7 @@ func set_window_parameters() -> void:
 	DisplayServer.window_set_position(screen_size * 0.5 - window_size * 0.5)
 
 
+#Allows fullscreen to be toggled with F11
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_fullscreen"):
 		if (DisplayServer.window_get_mode() == 

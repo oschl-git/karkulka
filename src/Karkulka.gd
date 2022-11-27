@@ -22,6 +22,7 @@ func _ready() -> void:
 	GlobalScript.gamegrid.game_grid_array[current_position.y][current_position.x].interact()
 
 
+#Smoothly changes global (actual) position
 func _physics_process(_delta: float) -> void:
 	global_position = lerp(
 		global_position,
@@ -31,6 +32,7 @@ func _physics_process(_delta: float) -> void:
 	)
 
 
+#Handles player movement
 func _input(event) -> void:
 	if event.is_action_pressed("move_up"):
 		change_position(current_position.x, current_position.y-1)
@@ -42,6 +44,8 @@ func _input(event) -> void:
 		change_position(current_position.x+1, current_position.y)
 
 
+#Changes current position, doesn't allow going out of bounds, calls wolf and
+#interacts with game fields
 func change_position(x : float, y : float, force := false) -> void:
 	if !can_move and !force: return
 	
@@ -65,6 +69,7 @@ func change_position(x : float, y : float, force := false) -> void:
 	GlobalScript.gamegrid.game_grid_array[current_position.y][current_position.x].interact()
 
 
+#Checks if Karkulka was devoured by The Wolf
 func check_wolf_death() -> void:
 	var wolf_position : Vector2 = GlobalScript.wolf.current_position
 	if wolf_position == current_position:
@@ -75,6 +80,7 @@ func check_wolf_death() -> void:
 		can_move = false
 
 
+#Moves the wolf, checks for Karkulka death
 func move_wolf() -> void:
 	check_wolf_death()
 	GlobalScript.wolf.move()

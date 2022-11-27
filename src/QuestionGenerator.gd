@@ -3,6 +3,7 @@ class_name QuestionGenerator
 #This class is used to get an array of questions
 
 
+#Returns an array of Question objects
 static func get_question_array() -> Array[Question]:
 	var new_question_array : Array[Question] = []
 
