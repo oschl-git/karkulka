@@ -1,5 +1,5 @@
 # Červená Karkulka (Little Red Riding Hood)
-A simple trivia based game. A school project for SPŠE Ječná.
+A simple trivia based game with questions about programming. A school project for SPŠE Ječná.
 
 ***Trivia questions are written in Czech. If you can't speak Czech, this game will be very difficult!***
 
