@@ -59,7 +59,10 @@ _global_script_class_icons={
 config/name="Karkulka"
 run/main_scene="res://UI/main_menu.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/image="res://icon.png"
+boot_splash/fullsize=false
+config/icon="res://icon.png"
+config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
@@ -69,6 +72,8 @@ GlobalScript="*res://src/GlobalScript.gd"
 
 window/size/viewport_width=320
 window/size/viewport_height=180
+window/size/window_width_override=1280
+window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
